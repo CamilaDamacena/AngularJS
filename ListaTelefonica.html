@@ -1,0 +1,89 @@
+<html ng-app="listaTelefonica">
+
+<head>
+    <meta charset="utf-8">
+    <title> Minha Lista Telefonica</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <script src="js/angular-1.7.5/angular.min.js" type="text/javascript"> </script>
+
+    <link src="CssAngular/ListaTelefonica.css" />
+
+    <script>
+        var listaTelefonicaApp = angular.module("listaTelefonica", []);
+        var cadastrarTelefonesController=function($scope){
+            
+            var contatos = [
+
+                {nome:"José", operadora:41,ddd:83, telefone:"9889-88999"},
+                {nome:"João", operadora:15,ddd:83, telefone:"3288-87988"},
+                {nome:"Milla", operadora:21,ddd:83, telefone:"4477-6577"}
+            ];
+            
+            $scope.contatos=contatos;
+            
+            
+        };
+        
+        listaTelefonicaApp.controller("cadastrarTelefonesController", cadastrarTelefonesController);
+        
+        
+        
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+        
+        </header>
+
+        <main>
+            <form ng-controller="cadastrarTelefonesController">
+                <div class="jumbotron">
+                    <table class="table table-striped">
+
+                        <tr>
+                            <th> Nome</th>
+                            <th> Operadora</th>
+                            <th> DDD</th>
+                            <th> Telefone</th>
+                        </tr>
+                        <tr ng-repeat="contato in contatos">
+                            <td>{{contato.nome}}</td>
+                            <td>{{contato.operadora}}</td>
+                            <td>{{contato.ddd}}</td>
+                            <td>{{contato.telefone}}</td>
+                        </tr>
+                    </table>
+                    <tr>
+                        <label for="nome"> Nome:</label>
+                        <input class="form-control" type="text" name="nome" ng-model="nome" placeholder="Nome" />
+
+                        <label for="operadora"> Operadora:</label>
+                        <input class="form-control" type="number" name="operadora" ng-model="operadora" placeholder="Operadora" />
+
+                        <label for="ddd"> DDD:</label>
+                        <input class="form-control" type="number" name="ddd" ng-model="ddd" placeholder="DDD" />
+
+                        <label for="telefone"> Telefone:</label>
+                        <input class="form-control" type="text" name="telefone" ng-model="telefone" placeholder="Telefone" />
+
+                    </tr>
+                    
+                        <button class="btn btn-primary btn-block" type="button" ng-click="adicionarContato(contato)"> Adicionar Contato</button>
+                    
+                </div>
+            </form>
+        </main>
+        
+        <footer>
+        
+        </footer>
+
+    </div>
+
+</body>
+</html>
